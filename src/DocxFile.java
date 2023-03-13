@@ -3,8 +3,6 @@ import java.util.HashMap;
 
 public class DocxFile {
 
-
-
     public DocxFile(String name, String Directory){
         this.fileName = name;
         this.Directory = Directory;

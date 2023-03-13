@@ -1,4 +1,3 @@
-
 import java.io.FileFilter;
 import java.io.IOException;
 import java.io.File;
@@ -9,14 +8,11 @@ public class FileTypeDetection {
     public FileTypeDetection(String DIRECTORY){
         this.DIRECTORY = DIRECTORY;
     }
-    private static String DIRECTORY;//absolute path to input
+    private static String DIRECTORY = "./src/FileInput/";//absolute path to input
 
-    public static String getDirectory(){
+    public String getDirectory()
+    {
         return DIRECTORY;
-    }
-    public static void setDIRECTORY(String dir){
-        DIRECTORY = dir;
-
     }
 
     //getting file counts --> convert counts to hashmaps "name / count" easier to access and less commands.
@@ -50,8 +46,6 @@ public class FileTypeDetection {
 
 
     public static void main(String[] args) throws IOException {
-
-        setDIRECTORY(args[0]);
 
         System.out.println("\n\t Traversing files in directory: " + DIRECTORY + "\n");
 
@@ -131,10 +125,7 @@ public class FileTypeDetection {
             System.out.println("File not found: " + e);
         }
 
-        driver.main(pdfNames, getDirectory());
-
-
-
+        driver.main(pdfNames, pptxNames);
 
     }
 
