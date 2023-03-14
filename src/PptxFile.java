@@ -30,23 +30,23 @@ public class PptxFile {
         }
 
         //sets the value of fileName to the parameter nameOfFile
-        this.fileName = nameOfFile;
+        fileName = nameOfFile;
 
         //calls the setFileSize method and returns the files length in bytes
-        this.fileSize = setFileSize();
+        fileSize = setFileSize();
 
         //calls the setAuthorName method and extracts the name of the file creator
-        this.author = setAuthorName(pptx);
+        author = setAuthorName(pptx);
 
         //calls the setCreationDate method to extract timestamp
-        this.creationDate = setCreationDate(pptx);
+        creationDate = setCreationDate(pptx);
 
         //calls the setNumberOfSlides methods and returns the number of slides counted
-        this.numberOfSlides = setNumberOfSlides(pptx);
+        numberOfSlides = setNumberOfSlides(pptx);
 
         //calls the setWordCount method which returns the word count
         //Issue, this method also counts words in images...
-        this.wordCount = setWordCount(pptx);
+        wordCount = setWordCount(pptx);
 
     }
 
@@ -56,14 +56,13 @@ public class PptxFile {
     String author;
     String creationDate;
     long fileSize;
-
     int wordCount;
 
     //get and set methods
 
     public String getFileName()
     {
-        return this.fileName;
+        return fileName;
     }
     public long setFileSize()
     {
@@ -71,15 +70,15 @@ public class PptxFile {
     }
     public long getFileSize()
     {
-        return this.fileSize;
+        return fileSize;
     }
-   public String setAuthorName(XMLSlideShow ppt)
+    public String setAuthorName(XMLSlideShow ppt)
     {
         POIXMLProperties.CoreProperties props = ppt.getProperties().getCoreProperties();
         return String.valueOf(props.getCreator());
     }
     public String getAuthorName(){
-        return this.author;
+        return author;
     }
     public int setNumberOfSlides(XMLSlideShow ppt) {
         int slideCount = 0;
@@ -90,7 +89,7 @@ public class PptxFile {
         return slideCount;
     }
     public int getNumberOfSlides(){
-        return this.numberOfSlides;
+        return numberOfSlides;
     }
 
     public String setCreationDate(XMLSlideShow ppt)
@@ -100,7 +99,7 @@ public class PptxFile {
     }
 
     public String getCreationDate(){
-        return this.creationDate;
+        return creationDate;
     }
     public int setWordCount(XMLSlideShow ppt)
     {
