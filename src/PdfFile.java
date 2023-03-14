@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 public class PdfFile {
 
-
     private File file;
     private PDDocument doc;
     //private PDDocumentInformation pdd;
@@ -37,20 +36,8 @@ public class PdfFile {
         this.fileMinute = ((GregorianCalendar) pdd.getCreationDate()).get(Calendar.MINUTE);
         this.fileSecond = ((GregorianCalendar) pdd.getCreationDate()).get(Calendar.SECOND);
 
-
-        int count = 0;
-        PDFTextStripper stripper = new PDFTextStripper();
-        stripper.setEndPage(20);
-        String text = stripper.getText(doc);
-        String[] texts = text.split(" ");
-        for (String txt : texts) {
-            if(txt.trim().length() != 0)
-            {
-                count = count + 1;
-            }
-        }
-        this.wordCount = count;
-
+        //calls the setWordCount method which returns the number of words in the pdf and initializes wordCount
+        this.wordCount = setWordCount(pdd);
 
         doc.close();
 
@@ -105,8 +92,20 @@ public class PdfFile {
         return this.fileSecond;
     }
     //end Laura section//
-    public void setWordCount(Integer count){
-        this.wordCount = count;
+    public int setWordCount(PDDocumentInformation pdd)throws IOException
+    {
+        int count = 0;
+        PDFTextStripper stripper = new PDFTextStripper();
+        stripper.setEndPage(20);
+        String text = stripper.getText(doc);
+        String[] texts = text.split(" ");
+        for (String txt : texts) {
+            if(txt.trim().length() != 0)
+            {
+                count = count + 1;
+            }
+        }
+        return count;
     }
 
     public Integer getWordCount(){

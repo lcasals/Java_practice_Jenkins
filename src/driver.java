@@ -8,21 +8,15 @@ public class driver {
 
         System.out.print("Running second program\n");
         FileObjectCreation createObject = new FileObjectCreation();
-
-        //createobject.createDocxObjects(docxarray);
         createObject.createPdfObjects(pdfArray);
         createObject.createPptxObjects(pptxArray);
-
-        //for(DocxFile docs: createobject.getListOfDocxObjects()){
-         //   System.out.println(docs.getFileName()+"\n");
-        //}
 
         for(PdfFile pdf: createObject.getListOfPdfObjects()){
 
             System.out.println("name of file: " + pdf.getFileName()+"\n");
             System.out.println("name of author: " + pdf.getAuthor()+"\n");
             System.out.println("page count: " + pdf.getPageCount()+"\n");
-            System.out.println("file size: " + (pdf.getFileSize()/1000) +"KB "
+            System.out.println("file size: " + (pdf.getFileSize()/1024) +"KB "
                     + pdf.getFileSize()+ " bytes" + "\n");
             System.out.println("word count: " + pdf.getWordCount()+"\n");
             System.out.println("date created: " + pdf.getFileMonth()+"/"+pdf.getFileDay()+
@@ -31,12 +25,13 @@ public class driver {
 
         }
         for(PptxFile pptx: createObject.getListOfPptxObjects()){
-
-            System.out.println("name of file: " + pptx.getFileName()+"\n");
-            System.out.println("name of author: " + pptx.getAuthor()+"\n");
-            //System.out.println("Total Slides Count: " + pptx.getSlides().length);
-            //System.out.println("In the pptx for loop");
-
+            System.out.println("Name of file: " + pptx.getFileName()+"\n");
+            System.out.println("Name of author: " + pptx.getAuthorName()+"\n");
+            System.out.println("Number of slides: " + pptx.getNumberOfSlides()+"\n");
+            System.out.println("file size: " + (pptx.getFileSize()/1024) +"KB "
+                    + pptx.getFileSize()+ " bytes" + "\n");
+            System.out.println("word count: " + pptx.getWordCount()+"\n");
+            System.out.println("Date Created: " + pptx.getCreationDate()+"\n");
         }
     }
 
